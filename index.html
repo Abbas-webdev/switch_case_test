@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <nav class="bg-white shadow-md p-4">
+        <div
+            class="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6">
+            <a href="index.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Əsas
+                Səhifə</a>
+            <a href="bal_hesablama.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bal
+                Hesablama</a>
+            <a href="ticket - Copy.html"
+                class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bilet</a>
+            <a href="week_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə Günü
+                1</a>
+            <a href="week2_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə
+                Günü 2</a>
+        </div>
+    </nav>
+    <div class="flex-grow flex items-center justify-center">
+        <div class="bg-white p-8 rounded-xl shadow-lg w-96">
+            <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">Məbləğ Sistemi</h1>
+
+            <input id="a" type="number" placeholder="Məbləği daxil edin"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
+
+            <div class="flex gap-4 mb-6">
+                <button onclick="Elve()"
+                    class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">Elave et</button>
+                <button onclick="Mexaric()"
+                    class="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">Mexaric et</button>
+            </div>
+
+            <h4 id="b" class="text-gray-700 mb-2">Sizin yuklediyiniz hazırki məbləğ 0 AZN</h4>
+            <h4 id="c" class="text-gray-700 mb-2">Ümumi məbləğ: 0 AZN</h4>
+            <h4 id="d" class="text-gray-700">Qalan məbləğ: 0 AZN</h4>
+        </div>
+    </div>
+    <script>
+        let a = document.getElementById('a')
+        let b = document.getElementById('b')
+        let c = document.getElementById('c')
+        let d = document.getElementById('d')
+
+        let toplam = 0
+
+
+        function Elve() {
+            let many = a.value.trim()
+            if (many === "") {
+                alert("Xəta: Məbləğ daxil etməmisiniz!");
+                return
+            }
+            b.innerHTML = `Sizin yuklediyiniz hazırki məbləğ ${many} AZN`;
+            toplam += +many
+            c.innerHTML = `Ümumi məbləğ: ${toplam} AZN`
+            a.value = ''
+        }
+
+        function Mexaric() {
+            let many = a.value.trim()
+            if (many === "") {
+                alert("Xəta: Məbləğ daxil etməmisiniz!");
+                return
+            }
+            let cixma = +many
+            toplam -= cixma
+            d.innerHTML = `Qalan məbləğ: ${toplam} AZN`;
+            a.value = ''
+
+
+        }
+    </script>
+</body>
+
+</html>

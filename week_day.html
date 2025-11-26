@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <body class="bg-gray-100 min-h-screen flex flex-col">
+
+        <nav class="bg-white shadow-md p-4">
+            <div
+                class="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Əsas
+                    Səhifə</a>
+                <a href="bal_hesablama.html"
+                    class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bal
+                    Hesablama</a>
+                <a href="ticket - Copy.html"
+                    class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bilet</a>
+                <a href="week_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə
+                    Günü
+                    1</a>
+                <a href="week2_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə
+                    Günü 2</a>
+            </div>
+        </nav>
+        <div class="flex-grow flex items-center justify-center">
+            <div class="bg-white p-8 rounded-lg shadow-md w-80 text-center">
+                <h2 class="text-2xl font-bold mb-4">Həftə Gününü Seç</h2>
+
+                <select id="week"
+                    class="w-full p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+
+                <button onclick="check()"
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors">
+                    Yoxla
+                </button>
+
+                <h3 id="a" class="mt-4 text-xl font-bold text-gray-700"></h3>
+            </div>
+        </div>
+        <script>
+            function check() {
+                let week = document.getElementById('week').value
+                let weekCheck = ''
+
+                switch (week) {
+                    case '1':
+                        weekCheck = 'Bazar ertəsi'
+                        break
+                    case '2':
+                        weekCheck = 'Çərşənbə axşamı'
+                        break
+                    case '3':
+                        weekCheck = 'Çərşənbə'
+                        break
+                    case '4':
+                        weekCheck = 'Cümə axşamı'
+                        break
+                    case '5':
+                        weekCheck = 'Cümə'
+                        break
+                    case '6':
+                        weekCheck = 'Şənbə'
+                        break
+                    case '7':
+                        weekCheck = 'Bazar'
+                        break
+                    default:
+                        weekCheck = 'Yanlış seçim';
+                }
+                let sonNetice = weekCheck
+                document.getElementById('a').innerHTML = sonNetice
+            }
+        </script>
+    </body>
+
+</html>

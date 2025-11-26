@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gün Nömrəsi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6">
+            <a href="index.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Əsas Səhifə</a>
+            <a href="bal_hesablama.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bal Hesablama</a>
+            <a href="ticket - Copy.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bilet</a>
+            <a href="week_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə Günü 1</a>
+            <a href="week2_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə Günü 2</a>
+        </div>
+    </nav>
+
+    <!-- Kontent -->
+    <div class="flex-grow flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-80">
+            <h2 class="text-2xl font-bold mb-4 text-center">Gün Nömrəsi</h2>
+
+            <label for="dayInput" class="block mb-2 font-medium">Gün nömrəsini daxil edin (1–7):</label>
+            <input id="dayInput" type="number" placeholder="1–7 arası"
+                class="w-full p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <button onclick="showDay()"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors">
+                Günü göstər
+            </button>
+
+            <h3 id="result" class="mt-4 text-center text-xl font-bold text-gray-700"></h3>
+        </div>
+    </div>
+
+    <script>
+        function showDay() {
+            let dayNumber = parseInt(document.getElementById('dayInput').value);
+            let dayName = '';
+
+            switch (dayNumber) {
+                case 1: dayName = 'Bazar ertəsi'; break;
+                case 2: dayName = 'Çərşənbə axşamı'; break;
+                case 3: dayName = 'Çərşənbə'; break;
+                case 4: dayName = 'Cümə axşamı'; break;
+                case 5: dayName = 'Cümə'; break;
+                case 6: dayName = 'Şənbə'; break;
+                case 7: dayName = 'Bazar'; break;
+                default: dayName = 'Yanlış gün';
+            }
+
+            document.getElementById('result').innerHTML = dayName;
+        }
+    </script>
+</body>
+
+</html>

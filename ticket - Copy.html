@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <nav class="bg-white shadow-md p-4">
+        <div
+            class="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6">
+            <a href="index.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Əsas
+                Səhifə</a>
+            <a href="bal_hesablama.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bal
+                Hesablama</a>
+            <a href="ticket - Copy.html"
+                class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Bilet</a>
+            <a href="week_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə Günü
+                1</a>
+            <a href="week2_day.html" class="text-gray-700 hover:text-blue-500 font-semibold transition-colors">Həftə
+                Günü 2</a>
+        </div>
+    </nav>
+    <div class="flex-grow flex items-center justify-center">
+        <div class="bg-white shadow-xl p-8 rounded-2xl w-[350px] space-y-5">
+            <h4 class="text-center text-xl font-semibold text-gray-700">Biletin qiyməti 20azn</h4>
+            <h1 class="text-xl font-bold text-center text-gray-700">Bilet Hesablayıcı</h1>
+
+            <select id="age" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400">
+                <option value="50">0–12 yaş</option>
+                <option value="25">13–17 yaş</option>
+                <option value="0">18–59 yaş</option>
+                <option value="30">60+ yaş</option>
+            </select>
+
+            <select id="dete" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400">
+                <option value="10">09:00–17:00</option>
+                <option value="0">17:01–23:00</option>
+            </select>
+
+            <select id="matte" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400">
+                <option value="0">2D</option>
+                <option value="10">3D</option>
+            </select>
+
+            <button onclick="getValue()"
+                class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
+                Seçiləni göstər
+            </button>
+
+            <h3 id="a" class="text-center text-xl font-semibold text-gray-700"></h3>
+        </div>
+    </div>
+    <script>
+        function getValue() {
+            const price = 100;
+
+            const ageValue = +document.getElementById("age").value;
+            const timeValue = +document.getElementById("dete").value;
+            const matteValue = +document.getElementById("matte").value;
+
+            let ageDiscount = 0;
+            let timeDiscount = 0;
+            let typeExtra = 0;
+
+            // Yaş endirimi
+            switch (ageValue) {
+                case 50:
+                    ageDiscount = 0.50;
+                    break;
+                case 25:
+                    ageDiscount = 0.25;
+                    break;
+                case 0:
+                    ageDiscount = 0.00;
+                    break;
+                case 30:
+                    ageDiscount = 0.30;
+                    break;
+            }
+
+            // Saat endirimi
+            switch (timeValue) {
+                case 10:
+                    timeDiscount = 0.10;
+                    break;
+                case 0:
+                    timeDiscount = 0.00;
+                    break;
+            }
+
+            // 2D / 3D
+            switch (matteValue) {
+                case 0:
+                    typeExtra = 0;
+                    break;
+                case 10:
+                    typeExtra = 5;
+                    break;
+            }
+
+            // Yekun hesab
+            let afterAge = price * (1 - ageDiscount);
+            let afterTime = afterAge * (1 - timeDiscount);
+            let final = afterTime + typeExtra;
+
+            document.getElementById("a").innerHTML = final + " AZN";
+        }
+    </script>
+</body>
+
+</html>
